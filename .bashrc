@@ -43,18 +43,19 @@ fi
 bind "set completion-ignore-case on"
 
 #list
-alias ls='ls --color=auto'
-alias la='ls -a'
-alias ll='ls -lah'
+alias ls='ls --color=auto'                               #ls command with color enabled
+alias la='ls -A'                                         #-A shows the hidden files exclude the directory . and ..
+alias ll='ls -lAh'                                       #-h flag show the size of the file in human redable format like in kb or mb
 alias l='ls'
 alias l.="ls -A | egrep '^\.'"
 
 #fix obvious typo's
-alias cd..='cd ..'
+alias cd..='cd ..'                                       
 alias pdw="pwd"
 alias udpate='sudo pacman -Syyu'
 alias upate='sudo pacman -Syyu'
-alias cls='clear'
+alias cls='clear'                                       #cls is the windows command prompt command to clear the screen, I like it most
+
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
@@ -77,7 +78,7 @@ alias free="free -mt"
 alias uac="sh ~/.bin/main/000*"
 
 #continue download
-alias wget="wget -c"
+alias wget="wget -c"        #don't need to type -c as I used wget a lot 
 
 #userlist
 alias userlist="cut -d: -f1 /etc/passwd"
@@ -87,8 +88,13 @@ alias merge="xrdb -merge ~/.Xresources"
 
 # Aliases for software managment
 # pacman or pm
-alias pacman='sudo pacman --color auto'
-alias update='sudo pacman -Syyu'
+alias pacman='sudo pacman -Sy --color auto'             #only pacman used to install a package -Sy will make me slower a bit
+alias update='sudo pacman -Syyu'                        #I like to use update to update my packages, easier to remember
+
+#Aliases for git
+alias gc='git clone'
+alias status='git status'
+alias gpom='git push origin master'
 
 # yay as aur helper - updates everything
 alias pksyua="yay -Syu --noconfirm"
@@ -106,6 +112,7 @@ alias update-fc='sudo fc-cache -fv'
 
 #copy/paste all content of /etc/skel over to home folder - backup of config created - beware
 alias skel='cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S) && cp -rf /etc/skel/* ~'
+
 #backup contents of /etc/skel to hidden backup folder in home/user
 alias bupskel='cp -Rf /etc/skel ~/.skel-backup-$(date +%Y.%m.%d-%H.%M.%S)'
 
@@ -224,6 +231,9 @@ ex ()
 
 [[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
 
+#To print my name logo in terminal when login 
+#I create a file in the home directory with the logo content in it, if you want your own then replace the file name with your file_name
+cat .cisssco                         
 
-cat .cisssco
+#To enable neofetch autometically when login to the terminal, it display the system statistics
 neofetch
